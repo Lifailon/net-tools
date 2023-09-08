@@ -5,21 +5,20 @@ Using **fincore** checks the list of all files in the **child directories (du)**
 ```bash
 root@devops-01:~# bash lspage.sh /var/log
 PAGE    SIZE    PATH
-6.9M    9.4M    /var/log/remote/192.168.3.104/syslog.log
-25.6M   32.9M   /var/log/remote/127.0.0.1/syslog.log
-4K      6.7K    /var/log/unattended-upgrades/unattended-upgrades.log
-33.6M   40M     /var/log/journal/cde6b7d10b0a4fccb7a250d101ea2256/system.journal
-4K      147.4K  /var/log/wtmp
+4K      19.4K   /var/log/apt/term.log
+4K      2.9K    /var/log/apt/history.log
+4.2M    12.8M   /var/log/remote/192.168.3.104/syslog.log
+14M     43.4M   /var/log/remote/127.0.0.1/syslog.log
+4K      23K     /var/log/dpkg.log
 32K     29.5K   /var/log/top-metrics.log
-1.4M    1.4M    /var/log/metrics/dir-monitor.log
-11.8M   11.8M   /var/log/metrics/top-metrics.log
-5.9M    5.9M    /var/log/metrics/iostat-metrics.log
-20K     174.2K  /var/log/auth.log
-8K      176K    /var/log/kern.log
-28.7M   37.1M   /var/log/atop/atop_20230908
-16K     285.4K  /var/log/lastlog
-276K    2.3M    /var/log/icmp-test.log
-32.5M   273.5M  /var/log/syslog
+1.5M    1.5M    /var/log/metrics/dir-monitor.log
+12.5M   12.5M   /var/log/metrics/top-metrics.log
+6.2M    6.2M    /var/log/metrics/iostat-metrics.log
+44K     208.5K  /var/log/auth.log
+8K      177.9K  /var/log/kern.log
+17.4M   50.7M   /var/log/atop/atop_20230908
+360K    2.4M    /var/log/icmp-test.log
+18.4M   287.3M  /var/log/syslog
 ```
 
 ## ping-network

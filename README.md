@@ -1,6 +1,6 @@
 ## lspage
 
-Using **fincore** checks the list of all files in the child directories (**du**) that store their pages in the cache (ignoring files that don't store their pages in the kernel).
+Using **fincore** checks the list of all files in the **child directories (du)** that store their pages in the cache (ignoring files that don't store their pages in the kernel).
 
 ```bash
 root@devops-01:~# bash lspage.sh /var/log

@@ -24,7 +24,7 @@ PAGE    SIZE    PATH
 
 ## ping-network
 
-Checks the availability of each host on the network using background threads. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all jobs to complete and sorts the output.
+Checks the availability of each host on the network using with the ping command. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all background thread to complete and sorts the output.
 
 ```bash
 root@devops-01:~# bash ping-network.sh 192.168.3.0

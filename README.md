@@ -27,6 +27,7 @@ PAGE    SIZE    PATH
 Checks the availability of each host on the network using background threads. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all jobs to complete and sorts the output.
 
 ```bash
+root@devops-01:~# bash ping-network.sh 192.168.3.0
 192.168.3.1      true
 192.168.3.2      false
 192.168.3.3      false

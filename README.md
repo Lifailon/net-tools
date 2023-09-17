@@ -1,26 +1,3 @@
-## lspage
-
-Using **fincore** checks the list of all files in the **child directories (du)** that store their pages in the cache (ignoring files that don't store their pages in the kernel).
-
-```bash
-root@devops-01:~# bash lspage.sh /var/log
-PAGE    SIZE    PATH
-4K      19.4K   /var/log/apt/term.log
-4K      2.9K    /var/log/apt/history.log
-4.2M    12.8M   /var/log/remote/192.168.3.104/syslog.log
-14M     43.4M   /var/log/remote/127.0.0.1/syslog.log
-4K      23K     /var/log/dpkg.log
-32K     29.5K   /var/log/top-metrics.log
-1.5M    1.5M    /var/log/metrics/dir-monitor.log
-12.5M   12.5M   /var/log/metrics/top-metrics.log
-6.2M    6.2M    /var/log/metrics/iostat-metrics.log
-44K     208.5K  /var/log/auth.log
-8K      177.9K  /var/log/kern.log
-17.4M   50.7M   /var/log/atop/atop_20230908
-360K    2.4M    /var/log/icmp-test.log
-18.4M   287.3M  /var/log/syslog
-```
-
 ## ping-network
 
 Checks the availability of each host on the network using with the ping command. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all background thread to complete and sorts the output.

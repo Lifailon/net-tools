@@ -3,12 +3,12 @@
 A script to output statistics of the specified network adapter since system startup. Output in json format is available (jq is used).
 
 ```bash
-lifailon@netbox-01:~$ bash nettraf.sh -h
+lifailon@netbox-01:~$ nettraf -h
 -h, --help               Get help
 -l, --list               List all interfaces,
 -i, --interface          Interface name for get network statistics
 -j, --json               Get statistics in json format
-lifailon@netbox-01:~$ bash nettraf.sh -l
+lifailon@netbox-01:~$ nettraf -l
 
 lo
 ens33
@@ -20,7 +20,7 @@ veth9043ae8@if108
 veth28935c9@if112
 veth8652dd7@if125
 
-lifailon@netbox-01:~$ bash nettraf.sh -i ens33
+lifailon@netbox-01:~$ nettraf -i ens33
 
 Receive GBytes: 13.082
 Receive Packets: 140068810
@@ -31,7 +31,7 @@ Transmit Packets: 22991624
 Transmit Errors: 0
 Transmit Drop: 0
 
-lifailon@netbox-01:~$ bash nettraf.sh -j ens33
+lifailon@netbox-01:~$ nettraf -j ens33
 {
   "Receive GBytes": "13.083 ",
   "Receive Packets": "140081010",
@@ -56,7 +56,7 @@ sudo chmod +x /usr/bin/nettraf
 Checks the availability of each host on the network using with the ping command. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all background thread to complete and sorts the output.
 
 ```bash
-root@devops-01:~# bash ping-network.sh 192.168.3.0
+root@devops-01:~# netping 192.168.3.0
 192.168.3.1      true
 192.168.3.2      false
 192.168.3.3      false
@@ -314,4 +314,11 @@ root@devops-01:~# bash ping-network.sh 192.168.3.0
 
 Available:       18
 Unavailable:     236
+```
+
+### Install
+
+```bash
+sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netping.sh -o /usr/bin/netping
+sudo chmod +x /usr/bin/netping
 ```

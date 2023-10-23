@@ -44,11 +44,11 @@ lifailon@netbox-01:~$ bash nettraf.sh -j ens33
 }
 ```
 
-## Install
+### Install
 
 ```bash
-curl https://raw.githubusercontent.com/ -o /usr/bin/nettraf
-chmod +x /usr/bin/nettraf
+sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/nettraf.sh -o /usr/bin/nettraf
+sudo chmod +x /usr/bin/nettraf
 ```
 
 ## netping

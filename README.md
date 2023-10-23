@@ -56,14 +56,14 @@ sudo chmod +x /usr/bin/nettraf
 Checks the availability of each host on the network using with the ping command. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all background thread to complete and sorts the output.
 
 ```bash
-root@devops-01:~# netping 192.168.3.0
+lifailon@netbox-01:~$ netping 192.168.3.0
 192.168.3.1      true
 192.168.3.2      false
 192.168.3.3      false
 192.168.3.4      false
 192.168.3.5      false
 192.168.3.6      false
-192.168.3.7      false
+192.168.3.7      true
 192.168.3.8      false
 192.168.3.9      false
 192.168.3.10     false
@@ -75,7 +75,7 @@ root@devops-01:~# netping 192.168.3.0
 192.168.3.16     false
 192.168.3.17     false
 192.168.3.18     false
-192.168.3.19     true
+192.168.3.19     false
 192.168.3.20     false
 192.168.3.21     false
 192.168.3.22     false
@@ -87,7 +87,7 @@ root@devops-01:~# netping 192.168.3.0
 192.168.3.28     false
 192.168.3.29     false
 192.168.3.30     false
-192.168.3.31     false
+192.168.3.31     true
 192.168.3.32     false
 192.168.3.33     false
 192.168.3.34     false
@@ -120,48 +120,48 @@ root@devops-01:~# netping 192.168.3.0
 192.168.3.61     false
 192.168.3.62     false
 192.168.3.63     false
-192.168.3.64     true
-192.168.3.65     true
+192.168.3.64     false
+192.168.3.65     false
 192.168.3.66     false
-192.168.3.67     true
-192.168.3.68     true
+192.168.3.67     false
+192.168.3.68     false
 192.168.3.69     true
 192.168.3.70     false
-192.168.3.71     true
-192.168.3.72     false
+192.168.3.71     false
+192.168.3.72     true
 192.168.3.73     false
 192.168.3.74     false
 192.168.3.75     false
 192.168.3.76     false
-192.168.3.77     false
+192.168.3.77     true
 192.168.3.78     false
 192.168.3.79     false
 192.168.3.80     false
 192.168.3.81     false
 192.168.3.82     false
 192.168.3.83     false
-192.168.3.84     false
+192.168.3.84     true
 192.168.3.85     false
 192.168.3.86     false
-192.168.3.87     false
-192.168.3.88     false
-192.168.3.89     false
-192.168.3.90     false
-192.168.3.91     false
+192.168.3.87     true
+192.168.3.88     true
+192.168.3.89     true
+192.168.3.90     true
+192.168.3.91     true
 192.168.3.92     false
 192.168.3.93     false
-192.168.3.94     false
+192.168.3.94     true
 192.168.3.95     false
 192.168.3.96     false
 192.168.3.97     false
 192.168.3.98     false
-192.168.3.99     true
+192.168.3.99     false
 192.168.3.100    true
 192.168.3.101    true
 192.168.3.102    true
 192.168.3.103    true
 192.168.3.104    true
-192.168.3.105    true
+192.168.3.105    false
 192.168.3.106    true
 192.168.3.107    true
 192.168.3.108    false
@@ -312,8 +312,8 @@ root@devops-01:~# netping 192.168.3.0
 192.168.3.253    false
 192.168.3.254    false
 
-Available:       18
-Unavailable:     236
+Available:       21
+Unavailable:     233
 ```
 
 ### Install

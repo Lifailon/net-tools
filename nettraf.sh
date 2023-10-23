@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function Get-Traf {
     interface=$1
     interfaces=($(ip a | grep -E "^[0-9]+:" | cut -d " " -f 2 | sed "s/:$//"))

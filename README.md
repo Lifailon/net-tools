@@ -1,4 +1,57 @@
-## ping-network
+## nettraf
+
+A script to output statistics of the specified network adapter since system startup. Output in json format is available (jq is used).
+
+```bash
+lifailon@netbox-01:~$ bash nettraf.sh -h
+-h, --help               Get help
+-l, --list               List all interfaces,
+-i, --interface          Interface name for get network statistics
+-j, --json               Get statistics in json format
+lifailon@netbox-01:~$ bash nettraf.sh -l
+
+lo
+ens33
+docker_gwbridge
+docker0
+br-7658e01baa2a
+veth5968af6@if15
+veth9043ae8@if108
+veth28935c9@if112
+veth8652dd7@if125
+
+lifailon@netbox-01:~$ bash nettraf.sh -i ens33
+
+Receive GBytes: 13.082
+Receive Packets: 140068810
+Receive Errors: 0
+Receive Drop: 14
+Transmit GBytes: 4.520
+Transmit Packets: 22991624
+Transmit Errors: 0
+Transmit Drop: 0
+
+lifailon@netbox-01:~$ bash nettraf.sh -j ens33
+{
+  "Receive GBytes": "13.083 ",
+  "Receive Packets": "140081010",
+  "Receive Errors": "0",
+  "Receive Drop": "14",
+  "Transmit GBytes": "4.520 ",
+  "Transmit Packets": "22993689",
+  "Transmit Errors": "0",
+  "Transmit Drop": "0"
+}
+```
+
+## Install
+
+```bash
+curl https://raw.githubusercontent.com/ -o /usr/bin/nettraf
+chmod +x /usr/bin/nettraf
+```
+
+## netping
 
 Checks the availability of each host on the network using with the ping command. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all background thread to complete and sorts the output.
 

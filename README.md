@@ -2,6 +2,15 @@
 
 A script to output statistics of the specified network adapter since system startup. Output in json format is available (jq is used).
 
+### Install
+
+```bash
+sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/nettraf.sh -o /usr/bin/nettraf
+sudo chmod +x /usr/bin/nettraf
+```
+
+### Example:
+
 ```bash
 lifailon@netbox-01:~$ nettraf -h
 -h, --help               Get help
@@ -44,16 +53,18 @@ lifailon@netbox-01:~$ nettraf -j ens33
 }
 ```
 
-### Install
-
-```bash
-sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/nettraf.sh -o /usr/bin/nettraf
-sudo chmod +x /usr/bin/nettraf
-```
-
 ## netping
 
 Checks the availability of each host on the network using with the ping command. Takes the ip-address parameter of the destination network, in case of its absence it takes the first available address of the current network adapter. Waits for all background thread to complete and sorts the output.
+
+### Install
+
+```bash
+sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netping.sh -o /usr/bin/netping
+sudo chmod +x /usr/bin/netping
+```
+
+### Example:
 
 ```bash
 lifailon@netbox-01:~$ netping 192.168.3.0
@@ -316,9 +327,150 @@ Available:       21
 Unavailable:     233
 ```
 
+## netcheck
+
+**[Check host](https://check-host.net/)** use API.
+
+`Format: netcheck <check_type> <check_dst_host> <host_src_count>`
+
 ### Install
 
 ```bash
-sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netping.sh -o /usr/bin/netping
-sudo chmod +x /usr/bin/netping
+sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netcheck.sh -o /usr/bin/netcheck
+sudo chmod +x /usr/bin/netcheck
+```
+
+### Check ping
+
+```bash
+root@netbox-01:/home/lifailon# netcheck ping yandex.ru 1
+{
+  "ir5.node.check-host.net": [
+    [
+      [
+        "OK",
+        0.135080099105835,
+        "213.180.193.56"
+      ],
+      [
+        "OK",
+        0.13080096244812
+      ],
+      [
+        "OK",
+        0.131378889083862
+      ],
+      [
+        "OK",
+        0.131412982940674
+      ]
+    ]
+  ]
+}
+```
+
+### Check dns
+
+```bash
+root@netbox-01:/home/lifailon# netcheck dns yandex.ru 1
+{
+  "br1.node.check-host.net": [
+    {
+      "A": [
+        "77.88.55.60",
+        "5.255.255.77",
+        "5.255.255.70",
+        "77.88.55.88"
+      ],
+      "AAAA": [
+        "2a02:6b8:a::a"
+      ],
+      "TTL": 65
+    }
+  ]
+}
+```
+
+### Check http
+
+```bash
+root@netbox-01:/home/lifailon# netcheck http yandex.ru 5
+{
+  "de1.node.check-host.net": [
+    [
+      1,
+      0.16261100769043,
+      "Moved temporarily",
+      302,
+      "77.88.55.60"
+    ]
+  ],
+  "fi1.node.check-host.net": [
+    [
+      1,
+      0.0886480808258057,
+      "Moved temporarily",
+      302,
+      "5.255.255.77"
+    ]
+  ],
+  "hk1.node.check-host.net": [
+    [
+      1,
+      0.674692153930664,
+      "Moved temporarily",
+      "302",
+      "77.88.55.60"
+    ]
+  ],
+  "ir1.node.check-host.net": [
+    [
+      1,
+      0.274091005325317,
+      "Moved temporarily",
+      "302",
+      "77.88.55.60"
+    ]
+  ],
+  "us3.node.check-host.net": [
+    [
+      1,
+      0.477482080459595,
+      "Moved temporarily",
+      "302",
+      "77.88.55.88"
+    ]
+  ]
+}
+```
+
+### Check tcp and udp port
+
+```bash
+root@netbox-01:/home/lifailon# netcheck tcp yandex.ru:443 1
+{
+  "ua2.node.check-host.net": [
+    {
+      "address": "77.88.55.88",
+      "time": 0.059514
+    }
+  ]
+}
+root@netbox-01:/home/lifailon# netcheck tcp yandex.ru:22 1
+{
+  "ae1.node.check-host.net": [
+    {
+      "error": "Connection timed out"
+    }
+  ]
+}
+root@netbox-01:/home/lifailon# netcheck udp yandex.ru:443 1
+{
+  "cz1.node.check-host.net": [
+    {
+      "address": "77.88.55.60",
+      "timeout": 1
+    }
+  ]
+}
 ```

@@ -331,7 +331,7 @@ Unavailable:     233
 
 **[Check host](https://check-host.net/)** use API.
 
-`Format: netcheck <check_type> <check_dst_host> <host_src_count>`
+Format: `netcheck --type <ping/dns/http/tcp/udp> <host> <node_count/node_name>`
 
 ### Install
 
@@ -443,7 +443,7 @@ lifailon@netbox-01:~$ netcheck -t dns yandex.ru
 }
 ```
 
-### Check http
+### Check http using multiple nodes
 
 ```bash
 lifailon@netbox-01:~$ netcheck -t http yandex.ru 5

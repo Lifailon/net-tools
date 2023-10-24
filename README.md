@@ -5,7 +5,7 @@ A script to output statistics of the specified network adapter since system star
 ### Install
 
 ```bash
-sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/nettraf.sh -o /usr/bin/nettraf
+sudo curl -s https://raw.githubusercontent.com/Lifailon/net-tools/rsa/nettraf.sh -o /usr/bin/nettraf
 sudo chmod +x /usr/bin/nettraf
 ```
 
@@ -60,7 +60,7 @@ Checks the availability of each host on the network using with the ping command.
 ### Install
 
 ```bash
-sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netping.sh -o /usr/bin/netping
+sudo curl -s https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netping.sh -o /usr/bin/netping
 sudo chmod +x /usr/bin/netping
 ```
 
@@ -336,33 +336,85 @@ Unavailable:     233
 ### Install
 
 ```bash
-sudo curl https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netcheck.sh -o /usr/bin/netcheck
+sudo curl -s https://raw.githubusercontent.com/Lifailon/net-tools/rsa/netcheck.sh -o /usr/bin/netcheck
 sudo chmod +x /usr/bin/netcheck
 ```
 
 ### Check ping
 
 ```bash
-root@netbox-01:/home/lifailon# netcheck ping yandex.ru 1
+lifailon@netbox-01:~$ netcheck -t ping yandex.ru
 {
-  "ir5.node.check-host.net": [
+  "kz1.node.check-host.net": [
     [
       [
         "OK",
-        0.135080099105835,
-        "213.180.193.56"
+        0.0498127937316895,
+        "77.88.55.88"
       ],
       [
         "OK",
-        0.13080096244812
+        0.0495548248291016
       ],
       [
         "OK",
-        0.131378889083862
+        0.0496258735656738
       ],
       [
         "OK",
-        0.131412982940674
+        0.0498530864715576
+      ]
+    ]
+  ]
+}
+```
+
+### Get node list for check
+
+```bash
+lifailon@netbox-01:~$ netcheck -n
+{
+  "hostname": "ae1.node.check-host.net",
+  "location": "Dubai"
+}
+{
+  "hostname": "at1.node.check-host.net",
+  "location": "Vienna"
+}
+...
+{
+  "hostname": "us1.node.check-host.net",
+  "location": "Los Angeles"
+}
+{
+  "hostname": "us3.node.check-host.net",
+  "location": "Atlanta"
+}
+```
+
+### Ping using selected node
+
+```
+lifailon@netbox-01:~$ netcheck -t ping yandex.ru us1.node.check-host.net
+{
+  "us1.node.check-host.net": [
+    [
+      [
+        "OK",
+        0.210521936416626,
+        "5.255.255.70"
+      ],
+      [
+        "OK",
+        0.210937976837158
+      ],
+      [
+        "OK",
+        0.210684061050415
+      ],
+      [
+        "OK",
+        0.210653066635132
       ]
     ]
   ]
@@ -372,20 +424,20 @@ root@netbox-01:/home/lifailon# netcheck ping yandex.ru 1
 ### Check dns
 
 ```bash
-root@netbox-01:/home/lifailon# netcheck dns yandex.ru 1
+lifailon@netbox-01:~$ netcheck -t dns yandex.ru
 {
   "br1.node.check-host.net": [
     {
       "A": [
-        "77.88.55.60",
         "5.255.255.77",
-        "5.255.255.70",
-        "77.88.55.88"
+        "77.88.55.60",
+        "77.88.55.88",
+        "5.255.255.70"
       ],
       "AAAA": [
         "2a02:6b8:a::a"
       ],
-      "TTL": 65
+      "TTL": 193
     }
   ]
 }
@@ -394,51 +446,51 @@ root@netbox-01:/home/lifailon# netcheck dns yandex.ru 1
 ### Check http
 
 ```bash
-root@netbox-01:/home/lifailon# netcheck http yandex.ru 5
+lifailon@netbox-01:~$ netcheck -t http yandex.ru 5
 {
-  "de1.node.check-host.net": [
+  "ch1.node.check-host.net": [
     [
       1,
-      0.16261100769043,
+      0.218896150588989,
       "Moved temporarily",
-      302,
+      "302",
       "77.88.55.60"
-    ]
-  ],
-  "fi1.node.check-host.net": [
-    [
-      1,
-      0.0886480808258057,
-      "Moved temporarily",
-      302,
-      "5.255.255.77"
     ]
   ],
   "hk1.node.check-host.net": [
     [
       1,
-      0.674692153930664,
-      "Moved temporarily",
-      "302",
-      "77.88.55.60"
-    ]
-  ],
-  "ir1.node.check-host.net": [
-    [
-      1,
-      0.274091005325317,
-      "Moved temporarily",
-      "302",
-      "77.88.55.60"
-    ]
-  ],
-  "us3.node.check-host.net": [
-    [
-      1,
-      0.477482080459595,
+      0.687891006469727,
       "Moved temporarily",
       "302",
       "77.88.55.88"
+    ]
+  ],
+  "md1.node.check-host.net": [
+    [
+      1,
+      0.20933985710144,
+      "Moved temporarily",
+      "302",
+      "77.88.55.60"
+    ]
+  ],
+  "ru2.node.check-host.net": [
+    [
+      1,
+      0.0666680335998535,
+      "Moved temporarily",
+      "302",
+      "5.255.255.77"
+    ]
+  ],
+  "ua3.node.check-host.net": [
+    [
+      1,
+      0.349638938903809,
+      "Moved temporarily",
+      "302",
+      "5.255.255.77"
     ]
   ]
 }
@@ -447,7 +499,7 @@ root@netbox-01:/home/lifailon# netcheck http yandex.ru 5
 ### Check tcp and udp port
 
 ```bash
-root@netbox-01:/home/lifailon# netcheck tcp yandex.ru:443 1
+root@netbox-01:/home/lifailon# netcheck -t tcp yandex.ru:443
 {
   "ua2.node.check-host.net": [
     {
@@ -456,7 +508,7 @@ root@netbox-01:/home/lifailon# netcheck tcp yandex.ru:443 1
     }
   ]
 }
-root@netbox-01:/home/lifailon# netcheck tcp yandex.ru:22 1
+root@netbox-01:/home/lifailon# netcheck -t tcp yandex.ru:22
 {
   "ae1.node.check-host.net": [
     {
@@ -464,7 +516,7 @@ root@netbox-01:/home/lifailon# netcheck tcp yandex.ru:22 1
     }
   ]
 }
-root@netbox-01:/home/lifailon# netcheck udp yandex.ru:443 1
+root@netbox-01:/home/lifailon# netcheck -t udp yandex.ru:443
 {
   "cz1.node.check-host.net": [
     {
